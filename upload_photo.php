@@ -18,12 +18,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['photos[]'])) {
         $img_name = $files['img_name'][$key];
         if ($error != UPLOAD_ERR_OK) {
             $result[] = "Upload error with $file";
+            continue;
         }
         if ($size > $maxSize) {
             $result[] = "Size error with $file [max - 2mbytes]";
+            continue;
         }
         if (!in_array($iType, $TrueTypes)) {
             $result[] = "Image type error with $file";
+            continue;
         }
     }
 } else {
