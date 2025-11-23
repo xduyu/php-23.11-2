@@ -22,6 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['photos[]'])) {
         if ($size > $maxSize) {
             $result[] = "Size error with $file [max - 2mbytes]";
         }
+        if (!in_array($iType, $TrueTypes)) {
+            $result[] = "Image type error with $file";
+        }
     }
 } else {
     header('Location: gallery.php');
